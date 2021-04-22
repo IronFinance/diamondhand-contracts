@@ -183,7 +183,7 @@ contract Pool is Operator, ReentrancyGuard, IPool {
         uint256 _total_value = 0;
         uint256 _required_diamond_amount = 0;
         if (target_collateral_ratio > 0) {
-            _total_value = _collateral_amount.mul(COLLATERAL_RATIO_PRECISION).div(target_collateral_ratio);
+            _total_value = _collateral_amount.mul(10**missing_decimals).mul(COLLATERAL_RATIO_PRECISION).div(target_collateral_ratio);
             if (target_collateral_ratio < COLLATERAL_RATIO_MAX) {
                 _required_diamond_amount = _total_value.sub(_collateral_amount).mul(PRICE_PRECISION).div(_diamond_relative_price);
             }

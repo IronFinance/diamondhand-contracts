@@ -146,7 +146,7 @@ contract VPegOracle is Operator, IPairOracle {
 
     /* ========== MUTABLE FUNCTIONS ========== */
     // update reserves and, on the first call per block, price accumulators
-    function updateCumulative() public {
+    function updateCumulative() internal {
         uint32 blockTimestamp = uint32(block.timestamp % 2**32);
         uint32 timeElapsed = blockTimestamp - blockTimestampLast; // Overflow is desired
 
